@@ -41,6 +41,9 @@ jobs:
           fi
           test -f pubspec.yaml
 
+      - name: Generate Android project files
+        run: flutter create --platforms=android .
+
       - name: Install dependencies
         run: flutter pub get
 
