@@ -47,7 +47,10 @@ jobs:
 
       - name: Generate Android project files
         run: flutter create --platforms=android .
-
+      - name: Fix Android build settings
+        run: |
+          sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/' android/app/build.gradle.kts
+          sed -i '/release {/a\        isMinifyEnabled = false' android/app/build.gradle.kts
       - name: Install Flutter packages
         run: flutter pub get
 
